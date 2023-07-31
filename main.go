@@ -18,5 +18,8 @@ func main() {
 	r.GET("/car/:id", controllers.GetCarId)
 	r.PUT("/car/:id", controllers.UpdateCar)
 	r.DELETE("/car/:id", controllers.DeleteCar)
-	r.Run()
+	err := r.Run()
+	if err != nil {
+		return
+	}
 }

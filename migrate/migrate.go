@@ -11,5 +11,8 @@ func init() {
 }
 
 func main() {
-	initializers.DB.AutoMigrate(&models.Car{})
+	err := initializers.DB.AutoMigrate(&models.Car{})
+	if err != nil {
+		return
+	}
 }

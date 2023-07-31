@@ -12,7 +12,10 @@ func CreateCar(c *gin.Context) {
 		Name string
 		Year int
 	}
-	c.Bind(&body)
+	err := c.Bind(&body)
+	if err != nil {
+		return
+	}
 
 	car := models.Car{Name: body.Name, Year: body.Year}
 
@@ -53,7 +56,10 @@ func UpdateCar(c *gin.Context) {
 		Name string
 		Year int
 	}
-	c.Bind(&body)
+	err := c.Bind(&body)
+	if err != nil {
+		return
+	}
 
 	var cars models.Car
 	initializers.DB.First(&cars, id)
